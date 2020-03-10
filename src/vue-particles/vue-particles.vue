@@ -29,6 +29,14 @@
       }
     },
     props: {
+      /**
+       * paricles 옵션 값 객체
+       * @type {Object}
+       */
+      particlesData: {
+        type: Object,
+        default: null,
+      },
       color: {
         type: String,
         default: '#dedede'
@@ -131,7 +139,7 @@
         clickEffect,
         clickMode
       ) {
-        particlesJS(this.id, {
+        particlesJS(this.id, this.particlesData !== null ? this.particlesData : { // 03.10 Ju 세밀한 애니메이션 설정을 위해 제공하는 API 기준이 아니라 Particles 옵션 객체 자체를 전달하여 적용할 수 있도록 props를 제공한다.
           "particles": {
             "number": {
               "value": particlesNumber,
